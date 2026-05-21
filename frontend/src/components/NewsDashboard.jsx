@@ -18,7 +18,7 @@ export default function NewsDashboard() {
                 setLoading(true);
                 setError('');
 
-                const response = await fetch('http://localhost:5000/api/news', {
+                const response = await fetch('https://pulsenews-gf40.onrender.com/api/news', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`

@@ -24,7 +24,7 @@ export default function CategorySelection() {
     const handleSave = async () => {
         if (!token) return setError('You are not logged in.');
         try {
-            const response = await fetch('http://localhost:5000/api/users/preferences', {
+            const response = await fetch('https://pulsenews-gf40.onrender.com/api/users/preferences', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
