@@ -26,7 +26,9 @@ router.get('/', auth, async (req, res) => {
             return res.status(500).json({ articles: [], msg: 'Server error: GNews API key not configured.' });
         }
 
-        const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&country=in&max=20&apikey=${apiKey}`;
+        const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&country=in&max=5&apikey=${apiKey}`;
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         const response = await axios.get(url);
 
