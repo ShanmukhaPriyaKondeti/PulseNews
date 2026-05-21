@@ -7,19 +7,11 @@ export default function NewsDashboard() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    const { user, token, logout } = useAuth();
+    const { token, logout } = useAuth();
 
     useEffect(() => {
 
         const fetchNews = async () => {
-
-            if (!token) {
-                setError('You are not logged in.');
-                return;
-            }
-
-            // Prevent multiple requests
-            if (loading) return;
 
             try {
 
@@ -59,9 +51,11 @@ export default function NewsDashboard() {
             }
         };
 
-        fetchNews();
+        if (token) {
+            fetchNews();
+        }
 
-    }, [token]);
+    }, [token, logout]);
 
 
 
@@ -122,8 +116,6 @@ export default function NewsDashboard() {
 
         <div className="min-h-screen bg-gray-100">
 
-            {/* Header */}
-
             <header className="bg-white shadow-md sticky top-0 z-50">
 
                 <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -144,8 +136,6 @@ export default function NewsDashboard() {
             </header>
 
 
-
-            {/* Main */}
 
             <main className="container mx-auto p-6">
 
